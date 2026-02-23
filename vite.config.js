@@ -4,16 +4,11 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   build: {
-    outDir: 'dist',
+    outDir: 'build', // Vercel ke liye standard folder
+    assetsDir: 'assets', // static assets ka folder
     rollupOptions: {
-      output: {
-        manualChunks: undefined,
-      },
-    },
+      input: '/index.html', // ensure entry file correctly resolves
+    }
   },
-  resolve: {
-    alias: {
-      // Add any aliases you're using
-    },
-  },
+  base: './', // relative paths ka use kare production me
 })
